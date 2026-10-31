@@ -1,0 +1,6 @@
+<article class="trip-card">
+  <div class="trip-card-top"><span class="vehicle-pill">{{ {'Bike':'🏍','Car':'🚗','Van':'🚐'}.get(trip.vehicle,'↗') }} {{ trip.vehicle }}</span><span class="seat-count">{{ trip.seats }} seat{% if trip.seats != 1 %}s{% endif %} available</span></div>
+  <div class="route"><div class="route-point"><span class="route-dot"></span><div><small>FROM</small><b>{{ trip.origin }}</b></div></div><div class="route-line"></div><div class="route-point"><span class="route-dot destination"></span><div><small>TO</small><b>{{ trip.destination }}</b></div></div></div>
+  <div class="trip-meta"><span>▦ {{ trip.travel_date.strftime('%d %b %Y') }}</span><span>◷ {{ trip.departure_time.strftime('%I:%M %p') }}</span></div>
+  <div class="trip-card-bottom"><div class="traveller-avatar">{{ trip.owner.name[:1]|upper }}</div><div class="traveller-name"><b>{{ trip.owner.name }}</b><small>{{ trip.owner.city or 'Traveller' }}</small></div><a class="arrow-link" href="{{ url_for('trip_detail', trip_id=trip.id) }}" aria-label="View trip">↗</a></div>
+</article>

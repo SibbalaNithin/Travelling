@@ -1,0 +1,280 @@
+<!-- {% extends "base.html" %}{% block title %}Find your travel companion{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-copy"><span class="eyebrow">THE JOURNEY IS BETTER TOGETHER</span>
+    <h1>Every road has a<br><em>story to share.</em></h1>
+    <p>Meet fellow solo travellers heading your way. Find a compatible trip, connect by choice, and make the miles memorable.</p>
+    <div class="hero-actions"><a class="btn primary" href="{{ url_for('search_trips') }}">Explore trips <span>↗</span></a><a class="btn ghost" href="{{ url_for('safety') }}">How safety works</a></div>
+    <div class="trust-line"><span class="avatars">● ● ●</span> A more connected way to travel</div>
+  </div>
+  <div class="hero-art"><div class="sun"></div><div class="road"></div><div class="floating-note"><span>✦</span><div><b>Your next adventure</b><small>Could start with a hello.</small></div></div><div class="art-label">TAKE THE SCENIC ROUTE</div></div>
+</section>
+<section class="search-panel">
+  <div class="section-kicker">START YOUR SEARCH</div>
+  <form action="{{ url_for('search_trips') }}" class="search-grid">
+    <label>Leaving from<input name="origin" placeholder="e.g. Bengaluru"></label>
+    <label>Going to<input name="destination" placeholder="e.g. Mysuru"></label>
+    <label>Travel date<input type="date" name="travel_date" min="{{ today.isoformat() }}"></label>
+    <button class="btn primary" type="submit">Find a trip <span>→</span></button>
+  </form>
+</section>
+<section class="section">
+  <div class="section-head"><div><span class="eyebrow">MADE FOR THE OPEN ROAD</span><h2>Travel, on your terms.</h2></div><a class="text-link" href="{{ url_for('search_trips') }}">View all trips ↗</a></div>
+  <div class="feature-grid">
+    <article class="feature-card"><div class="feature-icon peach">⌁</div><h3>Find your route</h3><p>Search by destination and date, with flexible matching for nearby travel days.</p></article>
+    <article class="feature-card"><div class="feature-icon mint">◎</div><h3>Connect by choice</h3><p>Send a request. Chat unlocks only when the trip owner accepts.</p></article>
+    <article class="feature-card"><div class="feature-icon lilac">♡</div><h3>Travel thoughtfully</h3><p>Review profiles, agree on plans, and use the safety checklist before you go.</p></article>
+  </div>
+</section>
+<section class="section">
+  <div class="section-head"><div><span class="eyebrow">OPEN ROAD, OPEN POSSIBILITIES</span><h2>Trips looking for a companion</h2></div><a class="text-link" href="{{ url_for('search_trips') }}">Explore all ↗</a></div>
+  {% if trips %}<div class="trip-grid">{% for trip in trips %}{% include "_trip_card.html" %}{% endfor %}</div>
+  {% else %}<div class="empty-state"><div class="empty-icon">↗</div><h3>Be the first to share a journey</h3><p>Publish a trip and find people heading the same way.</p><a class="btn primary" href="{{ url_for('new_trip') }}">Publish a trip</a></div>{% endif %}
+</section>
+{% endblock %} -->
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Your Travel Companion</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+<body>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-copy">
+            <span class="eyebrow">THE JOURNEY IS BETTER TOGETHER</span>
+
+            <h1>
+                Every road has a<br>
+                <em>story to share.</em>
+            </h1>
+
+            <p>
+                Meet fellow solo travellers heading your way.
+                Find a compatible trip, connect by choice,
+                and make the miles memorable.
+            </p>
+
+            <div class="hero-actions">
+                <a class="btn primary" href="{{ url_for('search_trips') }}">
+                    Explore Trips ↗
+                </a>
+
+                <a class="btn ghost" href="{{ url_for('safety') }}">
+                    How Safety Works
+                </a>
+            </div>
+
+            <div class="trust-line">
+                <span class="avatars">● ● ●</span>
+                A more connected way to travel
+            </div>
+        </div>
+
+        <div class="hero-art">
+            <div class="sun"></div>
+            <div class="road"></div>
+
+            <div class="floating-note">
+                <span>✦</span>
+                <div>
+                    <b>Your next adventure</b>
+                    <br>
+                    <small>Could start with a hello.</small>
+                </div>
+            </div>
+
+            <div class="art-label">
+                TAKE THE SCENIC ROUTE
+            </div>
+        </div>
+    </section>
+
+    <!-- SEARCH PANEL -->
+
+    <section class="search-panel">
+        <div class="section-kicker">
+            START YOUR SEARCH
+        </div>
+
+        <form action="{{ url_for('search_trips') }}" class="search-grid">
+
+            <label>
+                Leaving From
+                <input
+                    type="text"
+                    name="origin"
+                    placeholder="e.g. Bengaluru">
+            </label>
+
+            <label>
+                Going To
+                <input
+                    type="text"
+                    name="destination"
+                    placeholder="e.g. Mysuru">
+            </label>
+
+            <label>
+                Travel Date
+                <input
+                    type="date"
+                    name="travel_date">
+            </label>
+
+            <button class="btn primary" type="submit">
+                Find a Trip →
+            </button>
+        </form>
+    </section>
+
+    <!-- FEATURES -->
+
+    <section class="section">
+
+        <div class="section-head">
+            <div>
+                <span class="eyebrow">
+                    MADE FOR THE OPEN ROAD
+                </span>
+
+                <h2>Travel, on your terms.</h2>
+            </div>
+
+            <a class="text-link"
+               href="{{ url_for('search_trips') }}">
+                View All Trips ↗
+            </a>
+        </div>
+
+        <div class="feature-grid">
+
+            <article class="feature-card">
+                <div class="feature-icon peach">⌁</div>
+
+                <h3>Find Your Route</h3>
+
+                <p>
+                    Search by destination and date,
+                    with flexible matching for nearby travel days.
+                </p>
+            </article>
+
+            <article class="feature-card">
+                <div class="feature-icon mint">◎</div>
+
+                <h3>Connect By Choice</h3>
+
+                <p>
+                    Send a request. Chat unlocks only when
+                    the trip owner accepts.
+                </p>
+            </article>
+
+            <article class="feature-card">
+                <div class="feature-icon lilac">♡</div>
+
+                <h3>Travel Thoughtfully</h3>
+
+                <p>
+                    Review profiles, agree on plans,
+                    and use the safety checklist before you go.
+                </p>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- TRIPS SECTION -->
+
+    <section class="section">
+
+        <div class="section-head">
+
+            <div>
+                <span class="eyebrow">
+                    OPEN ROAD, OPEN POSSIBILITIES
+                </span>
+
+                <h2>
+                    Trips Looking For A Companion
+                </h2>
+            </div>
+
+            <a class="text-link"
+               href="{{ url_for('search_trips') }}">
+                Explore All ↗
+            </a>
+
+        </div>
+
+        {% if trips %}
+
+        <div class="trip-grid">
+
+            {% for trip in trips %}
+
+            <div class="trip-card">
+
+                <div class="trip-content">
+
+                    <h3>
+                        {{ trip.origin }} → {{ trip.destination }}
+                    </h3>
+
+                    <p class="trip-date">
+                        {{ trip.travel_date }}
+                    </p>
+
+                    <p>
+                        {{ trip.description }}
+                    </p>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+        {% else %}
+
+        <div class="empty-state">
+
+            <div class="empty-icon">
+                ↗
+            </div>
+
+            <h3>
+                Be the first to share a journey
+            </h3>
+
+            <p>
+                Publish a trip and find people heading the same way.
+            </p>
+
+            <a class="btn primary"
+               href="{{ url_for('new_trip') }}">
+                Publish a Trip
+            </a>
+
+        </div>
+
+        {% endif %}
+
+    </section>
+
+</body>
+</html>
